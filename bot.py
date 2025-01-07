@@ -5,7 +5,7 @@ import random
 
 # Bot 初始化
 intents = discord.Intents.default()  
-intents.messages = True  # 启用消息相关事件（根据需求启用特定事件）
+intents.messages = True 
 intents.message_content = True
 intents.emojis =True
 bot = commands.Bot(command_prefix="!", intents=intents)
@@ -32,8 +32,6 @@ async def cast_moon_blocks(ctx, question: str):
     ans = random.choice(["聖杯", "聖杯", "笑杯", "陰杯"])
     await ctx.send(ans)
 
-
-
 @bot.hybrid_command()
 async def dice(ctx, dice: int, face : int):
     """
@@ -47,8 +45,6 @@ async def dice(ctx, dice: int, face : int):
         reply = reply + str(num) + ","
         sum = sum + num
     await ctx.send(reply + "點數總共" + str(sum))
-
-
 
 # 讀取TOKEN
 f = open('TOKEN.txt', 'r')
