@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 import asyncio
 import random
+import os
 
 # Bot 初始化
 intents = discord.Intents.default()  
@@ -46,9 +47,12 @@ async def dice(ctx, dice: int, face : int):
         sum = sum + num
     await ctx.send(reply + "點數總共" + str(sum))
 
-# 讀取TOKEN
-f = open('TOKEN.txt', 'r')
-TOKEN = f.read()
-f.close()
+try:
+    # 讀取TOKEN
+    f = open('TOKEN.txt', 'r')
+    TOKEN = f.read()
+    f.close()
+except:
+    TOKEN = os.getenv("TOKEN")
 
 bot.run(TOKEN)
