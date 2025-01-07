@@ -22,14 +22,31 @@ async def test(ctx):
 
 @bot.hybrid_command()
 async def cast_moon_blocks(ctx, question: str):
+    """
+        Parameters:
+        question (str): 要問的問題
+    """
     await ctx.send(question)
     ans = random.choice(["正 正", "正 反", "反 正", "正 正"])
     await ctx.send(ans)
 
 
 
-# @bot.hybrid_command()
-# async def dice(ctx, dice: int, face : int):
+@bot.hybrid_command()
+async def dice(ctx, dice: int, face : int):
+    """
+        Parameters:
+        dice (int): 骰子數量
+        face (int): 骰子有幾面
+    """
+    reply = ""
+    sum = 0
+    num = 0
+    for i in dice:
+        num = random.randint(1, face)
+        reply = reply + str(num) + " "
+        sum = sum + num
+    await ctx.send(reply + "總共" + str(sum))
 
 
 
