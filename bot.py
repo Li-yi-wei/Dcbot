@@ -17,8 +17,19 @@ async def synccommand(ctx):
     await ctx.send("同步完成")
 
 @bot.hybrid_command()
-async def test(ctx, url: str):
+async def test(ctx):
     await ctx.send("測試正常")
+
+@bot.hybrid_command()
+async def cast_moon_blocks(ctx, question: str):
+    await ctx.send(question)
+    ans = random.choice(["正 正", "正 反", "反 正", "正 正"])
+    await ctx.send(ans)
+
+
+
+# @bot.hybrid_command()
+# async def dice(ctx, dice: int, face : int):
 
 
 
