@@ -18,16 +18,18 @@ async def synccommand(ctx):
 
 @bot.hybrid_command()
 async def test(ctx):
+    """
+    測試
+    """
     await ctx.send("測試正常")
 
 @bot.hybrid_command()
 async def cast_moon_blocks(ctx, question: str):
     """
-        Parameters:
         question (str): 要問的問題
     """
     await ctx.send(question)
-    ans = random.choice(["正 正", "正 反", "反 正", "正 正"])
+    ans = random.choice(["聖杯", "聖杯", "笑杯", "陰杯"])
     await ctx.send(ans)
 
 
@@ -35,18 +37,16 @@ async def cast_moon_blocks(ctx, question: str):
 @bot.hybrid_command()
 async def dice(ctx, dice: int, face : int):
     """
-        Parameters:
-        dice (int): 骰子數量
-        face (int): 骰子有幾面
+        dice (int): 骰子數量 face (int): 骰子有幾面
     """
     reply = ""
     sum = 0
     num = 0
-    for i in dice:
+    for i in range(dice):
         num = random.randint(1, face)
-        reply = reply + str(num) + " "
+        reply = reply + str(num) + ","
         sum = sum + num
-    await ctx.send(reply + "總共" + str(sum))
+    await ctx.send(reply + "點數總共" + str(sum))
 
 
 
