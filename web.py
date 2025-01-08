@@ -15,4 +15,4 @@ def run():
     app.run(host="0.0.0.0", port=port)
 
 # 在獨立執行緒中運行 HTTP 服務
-threading.Thread(target=run).start()
+threading.Thread(target = run).start()
