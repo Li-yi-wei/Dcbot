@@ -72,7 +72,7 @@ def home():
 
 # 啟動 HTTP 服務的函數
 def run():
-    port = int(os.getenv("PORT", 10000))  # 使用 Render 提供的 PORT 環境變數
+    port = os.getenv("PORT", 10000)  # 使用 Render 提供的 PORT 環境變數
     app.run(host="0.0.0.0", port=port)
 
 # 在獨立執行緒中運行 HTTP 服務
