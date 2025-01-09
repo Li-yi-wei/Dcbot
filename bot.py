@@ -3,6 +3,7 @@ from discord.ext import commands
 import asyncio
 import random
 import os
+from datetime import date
 
 import threading
 from flask import Flask
@@ -65,6 +66,13 @@ async def dice(ctx, dice: int, face : int):
         reply = reply + str(num) + ","
         sum = sum + num
     await ctx.send(reply + "點數總共" + str(sum))
+
+@bot.hybrid_command()
+async def fortune(ctx):
+    today = str(date.today())
+    user_id = str(ctx.author.id)
+    random_seed = random.Random(today + user_id)
+    await ctx.send(random_seed.choice("大吉", "吉", "小吉", "大凶", "凶", "小凶"))
 
 try:
     # 讀取TOKEN
