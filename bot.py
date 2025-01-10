@@ -74,7 +74,8 @@ async def fortune(ctx):
     seed = today + user_id
     random_seed = random.Random(seed)
     print(seed)
-    await ctx.send(random_seed.choice(["大吉", "吉", "小吉", "大凶", "凶", "小凶"]))
+    return_str = random_seed.choice(["大吉", "吉", "小吉", "大凶", "凶", "小凶"])
+    await ctx.send(return_str)
 
 try:
     # 讀取TOKEN
