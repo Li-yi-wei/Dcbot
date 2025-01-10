@@ -71,7 +71,9 @@ async def dice(ctx, dice: int, face : int):
 async def fortune(ctx):
     today = str(date.today())
     user_id = str(ctx.author.id)
-    random_seed = random.Random(today + user_id)
+    seed = today + user_id
+    random_seed = random.Random(seed)
+    print(seed)
     await ctx.send(random_seed.choice(["大吉", "吉", "小吉", "大凶", "凶", "小凶"]))
 
 try:
