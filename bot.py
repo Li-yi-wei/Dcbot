@@ -8,6 +8,7 @@ from datetime import date
 import threading
 from flask import Flask
 
+# Flask 是為了讓Render不會因為沒有PORT而停止
 # 建立一個 Flask 應用
 app = Flask(__name__)
 
@@ -35,7 +36,7 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 @commands.has_permissions(administrator = True) # 擁有管理員權限才能使用
 async def synccommand(ctx):
     await bot.tree.sync()
-    await ctx.send("同步完成")
+    await ctx.send("同步完成") # 要同步才能讓hybird command能夠使用
 
 @bot.hybrid_command()
 async def test(ctx):
@@ -72,18 +73,18 @@ async def fortune(ctx):
     today = str(date.today())
     user_id = str(ctx.author.id)
     seed = today + user_id
-    random_seed = random.Random(seed)
+    random_seed = random.Random(seed) # 固定同一天會是同一個結果
     print(seed)
     return_str = random_seed.choice(["大吉", "吉", "小吉", "大凶", "凶", "小凶"])
     await ctx.send(return_str)
 
 try:
     # 讀取TOKEN
-    f = open('TOKEN.txt', 'r')
+    f = open('TOKEN.txt', 'r') # 如果資料夾有TOKEN.txt就讀取他並獲得TOKEN
     TOKEN = f.read()
     f.close()
 except:
-    TOKEN = os.getenv("TOKEN")
+    TOKEN = os.getenv("TOKEN") # 否則嘗試讀取環境變數的TOKEN
 
 bot.run(TOKEN)
 
