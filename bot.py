@@ -81,12 +81,12 @@ async def fortune(ctx):
     await ctx.send(return_str)
 
 @bot.hybrid_command()
-async def choice(ctx, Options:str):
+async def choice(ctx, options:str):
     """
         Options (str): 選項用空白隔開
     """
-    Option = Options.split()
-    ans = random.choice(Option)
+    option = options.split()
+    ans = random.choice(option)
     await ctx.send(ans)
 
 try:
