@@ -3,7 +3,7 @@ from discord.ext import commands
 import asyncio
 import random
 import os
-from datetime import date
+from datetime import date, time
 
 import threading
 from flask import Flask
@@ -76,6 +76,7 @@ async def fortune(ctx):
     random_seed = random.Random(seed) # 固定同一天會是同一個結果
     print(seed)
     return_str = random_seed.choice(["大吉", "吉", "小吉", "大凶", "凶", "小凶"])
+    return_str = today + return_str
     await ctx.send(return_str)
 
 try:
@@ -85,7 +86,8 @@ try:
     f.close()
 except:
     TOKEN = os.getenv("TOKEN") # 否則嘗試讀取環境變數的TOKEN
-
+time.sleep(3) 
+print("Token starts with:", TOKEN[:10]) 
 bot.run(TOKEN)
 
 
