@@ -3,7 +3,8 @@ from discord.ext import commands
 import asyncio
 import random
 import os
-from datetime import date, time
+from datetime import date
+import time
 
 import threading
 from flask import Flask
@@ -86,7 +87,7 @@ try:
     f.close()
 except:
     TOKEN = os.getenv("TOKEN") # 否則嘗試讀取環境變數的TOKEN
-time.sleep(3) 
+time.sleep(5)  # 延遲 5 秒再連線
 print("Token starts with:", TOKEN[:10]) 
 bot.run(TOKEN)
 
