@@ -77,8 +77,17 @@ async def fortune(ctx):
     random_seed = random.Random(seed) # 固定同一天會是同一個結果
     print(seed)
     return_str = random_seed.choice(["大吉", "吉", "小吉", "大凶", "凶", "小凶"])
-    return_str = today + return_str
+    return_str = today + ":" + return_str
     await ctx.send(return_str)
+
+@bot.hybrid_command()
+async def choice(ctx, Options:str):
+    """
+        Options (str): 選項用空白隔開
+    """
+    Option = Options.split()
+    ans = random.choice(Option)
+    await ctx.send(ans)
 
 try:
     # 讀取TOKEN
