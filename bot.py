@@ -81,17 +81,17 @@ async def fortune(ctx):
     await ctx.send(return_str)
 
 @bot.hybrid_command()
-async def choice(ctx, options:str):
+async def choice(ctx, options: str):
     """
-        options (str): 選項用空白隔開
+        options (str): 選項用,隔開
     """
-    option = options.split()
+    option = options.split(",")  # 用逗號分隔選項
     random.seed(time.time())  # 每次呼叫都用不同種子
     if not option:
         await ctx.send("請提供選項")
         return
     ans = random.choice(option)
-    await ctx.send(ans)
+    await ctx.send(ans)  # 顯示隨機數字以便調試
 
 try:
     # 讀取TOKEN
