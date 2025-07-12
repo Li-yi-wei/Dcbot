@@ -83,7 +83,7 @@ async def fortune(ctx):
 @bot.hybrid_command()
 async def choice(ctx, options:str):
     """
-        Options (str): 選項用空白隔開
+        options (str): 選項用空白隔開
     """
     option = options.split()
     ans = random.choice(option)
