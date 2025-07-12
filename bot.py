@@ -86,6 +86,10 @@ async def choice(ctx, options:str):
         options (str): 選項用空白隔開
     """
     option = options.split()
+    random.seed(time.time())  # 每次呼叫都用不同種子
+    if not option:
+        await ctx.send("請提供選項")
+        return
     ans = random.choice(option)
     await ctx.send(ans)
 
